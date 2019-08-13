@@ -22,7 +22,7 @@
  * 
  * @category   CLS
  * @package    Paypal
- * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @copyright  Copyright (c) 2014 Classy Llama Studios, LLC (http://www.classyllama.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -58,6 +58,11 @@ class CLS_Paypal_Model_Paypal_Payflowpro extends Mage_Paypal_Model_Payflowpro
             ->setTender(self::TENDER_CC)
             ->setRequestId($this->_generateRequestId())
             ->setButtonsource(Mage::helper('cls_paypal')->getPaypalInfoCode());
+        
+        if($payment->getOrder()) {            
+            $request->setInvnum($payment->getOrder()->getIncrementId());
+        }
+       
         return $request;
     }
 

@@ -22,7 +22,7 @@
  * 
  * @category   CLS
  * @package    Paypal
- * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @copyright  Copyright (c) 2014 Classy Llama Studios, LLC (http://www.classyllama.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -30,9 +30,10 @@
 $installer = $this;
 
 $installer->startSetup();
+ 
+$installer->run("
 
-$sql = <<<SQL
-CREATE TABLE `cls_paypal_customer_stored` (
+CREATE TABLE IF NOT EXISTS `{$this->getTable('cls_paypal/customerstored')}` (
   `stored_card_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Stored_card_id',
   `transaction_id` varchar(255) NOT NULL COMMENT 'Transaction_id',
   `customer_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Customer_id',
@@ -44,10 +45,9 @@ CREATE TABLE `cls_paypal_customer_stored` (
   `payment_method` varchar(255) NOT NULL COMMENT 'Payment_method',
   PRIMARY KEY (`stored_card_id`),
   KEY `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` (`customer_id`),
-  CONSTRAINT `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `{$this->getTable('customer/entity')}` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cls_paypal_customer_stored';
-SQL;
 
-$installer->run($sql);
-
+");
+  
 $installer->endSetup();

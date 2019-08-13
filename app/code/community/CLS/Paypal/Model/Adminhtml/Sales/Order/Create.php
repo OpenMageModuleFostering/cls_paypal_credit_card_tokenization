@@ -1,11 +1,29 @@
 <?php
 /**
- * Create.php
+ * Classy Llama
  *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email to us at
+ * support+paypal@classyllama.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module
+ * to newer versions in the future. If you require customizations of this
+ * module for your needs, please write us at sales@classyllama.com.
+ *
+ * To report bugs or issues with this module, please email support+paypal@classyllama.com.
+ * 
  * @category   CLS
  * @package    Paypal
- * @author     Jonathan Hodges <jonathan@classyllama.com>
- * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC
+ * @copyright  Copyright (c) 2014 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 class CLS_Paypal_Model_Adminhtml_Sales_Order_Create extends Mage_Adminhtml_Model_Sales_Order_Create
@@ -33,8 +51,9 @@ class CLS_Paypal_Model_Adminhtml_Sales_Order_Create extends Mage_Adminhtml_Model
         $this->_prepareQuoteItems();
 
         $service = Mage::getModel('sales/service_quote', $quote);
-        if ($this->getSession()->getOrder()->getId()) {
-            $oldOrder = $this->getSession()->getOrder();
+        /** @var Mage_Sales_Model_Order $oldOrder */
+        $oldOrder = $this->getSession()->getOrder();
+        if ($oldOrder->getId()) {
             $originalId = $oldOrder->getOriginalIncrementId();
             if (!$originalId) {
                 $originalId = $oldOrder->getIncrementId();
@@ -48,24 +67,26 @@ class CLS_Paypal_Model_Adminhtml_Sales_Order_Create extends Mage_Adminhtml_Model
             );
             $quote->setReservedOrderId($orderData['increment_id']);
             $service->setOrderData($orderData);
+
+            $oldOrder->cancel();
         }
 
+        /** @var Mage_Sales_Model_Order $order */
         $order = $service->submit();
-        if ((!$quote->getCustomer()->getId() || !$quote->getCustomer()->isInStore($this->getSession()->getStore()))
+        $customer = $quote->getCustomer();
+        if ((!$customer->getId() || !$customer->isInStore($this->getSession()->getStore()))
             && !$quote->getCustomerIsGuest()
         ) {
-            $quote->getCustomer()->setCreatedAt($order->getCreatedAt());
-            $quote->getCustomer()
+            $customer->setCreatedAt($order->getCreatedAt());
+            $customer
                 ->save()
                 ->sendNewAccountEmail('registered', '', $quote->getStoreId());;
         }
-        if ($this->getSession()->getOrder()->getId()) {
-            $oldOrder = $this->getSession()->getOrder();
 
-            $this->getSession()->getOrder()->setRelationChildId($order->getId());
-            $this->getSession()->getOrder()->setRelationChildRealId($order->getIncrementId());
-            $this->getSession()->getOrder()->cancel()
-                ->save();
+        if ($oldOrder->getId()) {
+            $oldOrder->setRelationChildId($order->getId());
+            $oldOrder->setRelationChildRealId($order->getIncrementId());
+            $oldOrder->save();
             $order->save();
         }
         if ($this->getSendConfirmation()) {

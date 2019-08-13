@@ -22,7 +22,7 @@
  * 
  * @category   CLS
  * @package    Paypal
- * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @copyright  Copyright (c) 2014 Classy Llama Studios, LLC (http://www.classyllama.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -50,7 +50,8 @@ class CLS_Paypal_Model_Paypal_Stored_Customerstored extends CLS_Paypal_Model_Pay
             $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         }
         
-        if (!$customerId) {
+        if (!$customerId
+            || (!Mage::getSingleton('customer/session')->isLoggedIn() && !Mage::app()->getStore()->isAdmin())) {
             return false;
         }
 

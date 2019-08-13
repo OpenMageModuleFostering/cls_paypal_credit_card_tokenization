@@ -1,6 +1,50 @@
-CLS_Paypal 1.1.0 (09/11/2013)
+CLS_Paypal 1.1.10 (5/19/2015)
 =======================================
-Backward compatibility through Magento 1.5/1.10
+[CHANGED] Minor template and method changes to match core codebase
+
+CLS_Paypal 1.1.9 (10/16/2014)
+=======================================
+[FIXED] Support for saved credit card in admin
+[FIXED] Guest billing agreement sign-up in PayFlow Express, due to collision with Bill Me Later
+
+CLS_Paypal 1.1.8 (9/15/2014)
+=======================================
+[FIXED] Fixed minor style issue with responsive theme
+
+CLS_Paypal 1.1.7 (8/8/2014)
+=======================================
+[ADDED] Notifications about PayPal reference transaction configuration in System Config
+[FIXED] Made sure saved credit card options don't show when not actually logged in with Persistent Cart
+[FIXED] Bug with the way saved credit card options are filtered by expiration
+
+CLS_Paypal 1.1.6 (7/7/2014)
+=======================================
+[CHANGED] Re-formatted README
+[CHANGED] Modified the way info code is retrieved
+
+CLS_Paypal 1.1.5 (5/30/2014)
+=======================================
+[FIXED] Fixed install script to properly support table prefixes
+
+CLS_Paypal 1.1.4 (5/13/2014)
+=======================================
+[FIXED] Send invoice number with PayFlow reference transactions to avoid duplicate invoice issue
+
+CLS_Paypal 1.1.3 (5/12/2014)
+=======================================
+[CHANGED] Modifications to accommodate new code changes in CE 1.9/EE 1.14
+
+CLS_Paypal 1.1.2 (4/18/2013)
+=======================================
+[FIXED] Fixed system.xml verisign node, which was causing config to vanish for certain countries
+
+CLS_Paypal 1.1.1 (4/5/2013)
+=======================================
+[CHANGED] Minor changes to Connect package file
+
+CLS_Paypal 1.1.0 (3/28/2013)
+=======================================
+[ADDED] Backward compatibility through Magento 1.5/1.10
 
 CLS_Paypal 1.0.9 (3/25/2014)
 =======================================

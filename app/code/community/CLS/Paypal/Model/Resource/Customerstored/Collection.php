@@ -22,7 +22,7 @@
  * 
  * @category   CLS
  * @package    Paypal
- * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @copyright  Copyright (c) 2014 Classy Llama Studios, LLC (http://www.classyllama.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -57,9 +57,9 @@ class CLS_Paypal_Model_Resource_Customerstored_Collection extends Mage_Core_Mode
      */
     public function filterByActiveState()
     {
-        $now = new Zend_Date(null);
-        $now->addMonth(0 - CLS_Paypal_Model_Paypal_Config::STORED_CARD_TTL_MONTHS);
-        $this->getSelect()->where('date >= ?', date('Y-m-d', time()));
+        $minDate = new Zend_Date(null);
+        $minDate->addMonth(0 - CLS_Paypal_Model_Paypal_Config::STORED_CARD_TTL_MONTHS);         
+        $this->getSelect()->where('date >= ?', date('Y-m-d', $minDate->get(Zend_Date::TIMESTAMP)));
 
         return $this;
     }
