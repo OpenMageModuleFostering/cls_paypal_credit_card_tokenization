@@ -1,3 +1,8 @@
+CLS_Paypal 1.1.6 (7/7/2014)
+=======================================
+[CHANGED] Re-formatted README
+[CHANGED] Modified the way info code is retrieved
+
 CLS_Paypal 1.1.5 (5/30/2014)
 =======================================
 [FIXED] Fixed install script to properly support table prefixes
