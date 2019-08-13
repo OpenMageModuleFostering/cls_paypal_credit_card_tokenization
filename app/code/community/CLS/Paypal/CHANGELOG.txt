@@ -1,3 +1,7 @@
+CLS_Paypal 1.1.8 (9/15/2014)
+=======================================
+[FIXED] Fixed minor style issue with responsive theme
+
 CLS_Paypal 1.1.7 (8/8/2014)
 =======================================
 [ADDED] Notifications about PayPal reference transaction configuration in System Config
