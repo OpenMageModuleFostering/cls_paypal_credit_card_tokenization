@@ -1,4 +1,4 @@
-## <a name="paypal-token" />Saved Credit Cards via PayPal Tokenization
+## Saved Credit Cards via PayPal Tokenization
 
 PCI Compliant saved credit cards with Paypal reference transactions
 

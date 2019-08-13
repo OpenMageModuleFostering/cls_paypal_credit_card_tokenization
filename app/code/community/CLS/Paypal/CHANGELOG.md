@@ -1,3 +1,7 @@
+CLS_Paypal 1.1.12 (9/4/2015)
+=======================================
+[FIXED] Date handling bug when saving last used date of saved credit card
+
 CLS_Paypal 1.1.11 (6/19/2015)
 =======================================
 [CHANGED] Moved doc files to root directory

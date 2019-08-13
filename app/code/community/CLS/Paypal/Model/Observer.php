@@ -231,7 +231,7 @@ class CLS_Paypal_Model_Observer
                             // Update stored card record with a new transaction ID
                             $customerstoredModel
                                 ->setData('transaction_id', $payment->getData('transaction_id'))
-                                ->setData('date', date('Y-m-d'));
+                                ->setData('date', date('Y-m-d H:i:s'));
                             $customerstoredModel->save();
                         }
                     }
