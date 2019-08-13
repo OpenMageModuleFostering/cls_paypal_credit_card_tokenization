@@ -29,8 +29,7 @@
 class CLS_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    const DEFAULT_PAYPAL_INFO_CODE = 'Q2xhc3N5TGxhbWFfU0lfTWFnZW50b0VFX1JlZlRyYW4=';
-    const CONFIG_PATH_PAYPAL_INFO_CODE = 'cls_paypal/general/info_code';
+    const PAYPAL_INFO_CODE = 'Q2xhc3N5TGxhbWFfU0lfTWFnZW50b0VFX1JlZlRyYW4=';
 
     /**
      * Native payment methods supported by the module
@@ -129,11 +128,7 @@ class CLS_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
      * @return string
      */
     public function getPaypalInfoCode() {
-        $code = Mage::getStoreConfig(self::CONFIG_PATH_PAYPAL_INFO_CODE);
-        if (!$code) {
-            $code = self::DEFAULT_PAYPAL_INFO_CODE;
-        }
-        return base64_decode($code);
+        return base64_decode(self::PAYPAL_INFO_CODE);
     }
 
     /**

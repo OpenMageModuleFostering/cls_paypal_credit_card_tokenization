@@ -51,9 +51,8 @@ class CLS_Paypal_Model_Adminhtml_Sales_Order_Create extends Mage_Adminhtml_Model
         $this->_prepareQuoteItems();
 
         $service = Mage::getModel('sales/service_quote', $quote);
-        /** @var Mage_Sales_Model_Order $oldOrder */
-        $oldOrder = $this->getSession()->getOrder();
-        if ($oldOrder->getId()) {
+        if ($this->getSession()->getOrder()->getId()) {
+            $oldOrder = $this->getSession()->getOrder();
             $originalId = $oldOrder->getOriginalIncrementId();
             if (!$originalId) {
                 $originalId = $oldOrder->getIncrementId();
@@ -67,26 +66,24 @@ class CLS_Paypal_Model_Adminhtml_Sales_Order_Create extends Mage_Adminhtml_Model
             );
             $quote->setReservedOrderId($orderData['increment_id']);
             $service->setOrderData($orderData);
-
-            $oldOrder->cancel();
         }
 
-        /** @var Mage_Sales_Model_Order $order */
         $order = $service->submit();
-        $customer = $quote->getCustomer();
-        if ((!$customer->getId() || !$customer->isInStore($this->getSession()->getStore()))
+        if ((!$quote->getCustomer()->getId() || !$quote->getCustomer()->isInStore($this->getSession()->getStore()))
             && !$quote->getCustomerIsGuest()
         ) {
-            $customer->setCreatedAt($order->getCreatedAt());
-            $customer
+            $quote->getCustomer()->setCreatedAt($order->getCreatedAt());
+            $quote->getCustomer()
                 ->save()
                 ->sendNewAccountEmail('registered', '', $quote->getStoreId());;
         }
+        if ($this->getSession()->getOrder()->getId()) {
+            $oldOrder = $this->getSession()->getOrder();
 
-        if ($oldOrder->getId()) {
-            $oldOrder->setRelationChildId($order->getId());
-            $oldOrder->setRelationChildRealId($order->getIncrementId());
-            $oldOrder->save();
+            $this->getSession()->getOrder()->setRelationChildId($order->getId());
+            $this->getSession()->getOrder()->setRelationChildRealId($order->getIncrementId());
+            $this->getSession()->getOrder()->cancel()
+                ->save();
             $order->save();
         }
         if ($this->getSendConfirmation()) {

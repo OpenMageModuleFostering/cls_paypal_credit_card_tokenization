@@ -252,27 +252,6 @@ class CLS_Paypal_Block_Paypal_Adminhtml_System_Config_Fieldset_Location extends 
                         }
                         paypalConflictsObject.ecCheckAvailability();
                         paypalConflictsObject.sharePayflowEnabling(enabler, isEvent);
-                    },
-
-                    handleBmlEnabler: function(event) {
-                        required = Event.element(event);
-                        var bml = $(required).bmlEnabler;
-                        if (required.value == "1") {
-                            bml.value = "1";
-                        }
-                        paypalConflictsObject.toggleBmlEnabler(required);
-                    },
-
-                    toggleBmlEnabler: function(required) {
-                        var bml = $(required).bmlEnabler;
-                        if (!bml) {
-                            return;
-                        }
-                        if (required.value != "1") {
-                            bml.value = "0";
-                            $(bml).disable();
-                        }
-                        $(bml).requiresObj.indicateEnabled();
                     }
                 };
 
@@ -328,19 +307,8 @@ class CLS_Paypal_Block_Paypal_Adminhtml_System_Config_Fieldset_Location extends 
                     }
                 }
 
-                $$(".paypal-bml").each(function(bmlEnabler) {
-                    $(bmlEnabler).classNames().each(function(className) {
-                        if (className.indexOf("requires-") !== -1) {
-                            var required = $(className.replace("requires-", ""));
-                            required.bmlEnabler = bmlEnabler;
-                            Event.observe(required, "change", paypalConflictsObject.handleBmlEnabler);
-                        }
-                    });
-                });
-
                 $$(".paypal-enabler").each(function(enablerElement) {
                     paypalConflictsObject.checkPaymentConflicts(enablerElement, "initial");
-                    paypalConflictsObject.toggleBmlEnabler(enablerElement);
                 });
                 if (paypalConflictsObject.isConflict || paypalConflictsObject.ecMissed) {
                     var notification = \'' .  $this->helper('core')->jsQuoteEscape($this->__('The following error(s) occured:')) . '\';

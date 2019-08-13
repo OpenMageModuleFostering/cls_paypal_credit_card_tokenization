@@ -30,10 +30,9 @@
 $installer = $this;
 
 $installer->startSetup();
- 
-$installer->run("
 
-CREATE TABLE IF NOT EXISTS `{$this->getTable('cls_paypal/customerstored')}` (
+$sql = <<<SQL
+CREATE TABLE `cls_paypal_customer_stored` (
   `stored_card_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Stored_card_id',
   `transaction_id` varchar(255) NOT NULL COMMENT 'Transaction_id',
   `customer_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Customer_id',
@@ -45,9 +44,10 @@ CREATE TABLE IF NOT EXISTS `{$this->getTable('cls_paypal/customerstored')}` (
   `payment_method` varchar(255) NOT NULL COMMENT 'Payment_method',
   PRIMARY KEY (`stored_card_id`),
   KEY `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` (`customer_id`),
-  CONSTRAINT `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `{$this->getTable('customer/entity')}` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cls_paypal_customer_stored';
+SQL;
 
-");
-  
+$installer->run($sql);
+
 $installer->endSetup();

@@ -28,7 +28,6 @@
 
 class CLS_Paypal_Helper_Paypal_Data extends Mage_Paypal_Helper_Data
 {
-    protected $_baShouldAskByMethod = array();
 
     /**
      * Check whether customer should be asked confirmation whether to sign a billing agreement
@@ -39,16 +38,16 @@ class CLS_Paypal_Helper_Paypal_Data extends Mage_Paypal_Helper_Data
      */
     public function shouldAskToCreateBillingAgreement(Mage_Paypal_Model_Config $config, $customerId)
     {
-        if (!isset($this->_baShouldAskByMethod[$config->getMethodCode()])) {
-            $this->_baShouldAskByMethod[$config->getMethodCode()] = false;
+        if (null === self::$_shouldAskToCreateBillingAgreement) {
+            self::$_shouldAskToCreateBillingAgreement = false;
             if ($customerId && $config->shouldAskToCreateBillingAgreement()) {
                 if (Mage::getModel('sales/billing_agreement')->needToCreateForCustomer($customerId)) {
-                    $this->_baShouldAskByMethod[$config->getMethodCode()] = true;
+                    self::$_shouldAskToCreateBillingAgreement = true;
                 }
             } elseif (!$customerId && $config->shouldAskToCreateBillingAgreement()) {
-                $this->_baShouldAskByMethod[$config->getMethodCode()] = true;
+                self::$_shouldAskToCreateBillingAgreement = true;
             }
         }
-        return $this->_baShouldAskByMethod[$config->getMethodCode()];
+        return self::$_shouldAskToCreateBillingAgreement;
     }
 }
