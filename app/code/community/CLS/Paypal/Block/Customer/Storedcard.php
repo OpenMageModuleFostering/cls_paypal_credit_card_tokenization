@@ -60,7 +60,7 @@ class CLS_Paypal_Block_Customer_Storedcard extends Mage_Core_Block_Template
     {
         return Mage::app()->getLocale()->storeDate(
             $this->getCustomer()->getStoreId(),
-            Varien_Date::toTimestamp($date)
+            strtotime($date)
         );
     }
 

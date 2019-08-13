@@ -112,7 +112,7 @@ class CLS_Paypal_Model_Paypal_Payflowlink extends Mage_Paypal_Model_Payflowlink
                 'cc_last4' => ($response->getAcct()) ? substr($response->getAcct(), -4) : '',
                 'cc_exp_month' => $ccExpMonth,
                 'cc_exp_year' => (($response->getExpdate()) ? '20'.substr($response->getExpdate(), 2) : ''),
-                'date' => Varien_Date::formatDate(true, true),
+                'date' => date('Y-m-d H:i:s'),
                 'payment_method' => $payment->getMethod()
             ));
             $customerstoredModel->save();

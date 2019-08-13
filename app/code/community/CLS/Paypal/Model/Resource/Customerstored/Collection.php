@@ -26,7 +26,7 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-class CLS_Paypal_Model_Resource_Customerstored_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
+class CLS_Paypal_Model_Resource_Customerstored_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     /**
      * Resource initialization
@@ -59,7 +59,7 @@ class CLS_Paypal_Model_Resource_Customerstored_Collection extends Mage_Core_Mode
     {
         $now = new Zend_Date(null);
         $now->addMonth(0 - CLS_Paypal_Model_Paypal_Config::STORED_CARD_TTL_MONTHS);
-        $this->getSelect()->where('date >= ?', Varien_Date::formatDate($now, false));
+        $this->getSelect()->where('date >= ?', date('Y-m-d', time()));
 
         return $this;
     }

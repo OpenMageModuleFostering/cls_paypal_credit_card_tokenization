@@ -86,6 +86,7 @@ class CLS_Paypal_Model_Paypal_Stored_Orderstored extends CLS_Paypal_Model_Paypal
 
         if (
             ($originalOrderId = $session->getPreviousOrderId())
+            || ($originalOrderId = $session->getReordered())
             || ($originalOrderId = $session->getOrderId())
         ) {
             // Assign CC info (taken from the original order)

@@ -94,12 +94,12 @@
 
     <?php if ($this->isCcSaveAllowed()): ?>
     <li>
-        <label for="<?php echo $_code ?>_cc_save_future"><?php echo $this->__('Save this card for future use') ?></label>
         <div class="input-box">
             <div class="v-fix">
                 <input type="checkbox" id="<?php echo $_code ?>_cc_save_future" name="payment[cc_save_future]" value="Y" />
             </div>
         </div>
+        <label for="<?php echo $_code ?>_cc_save_future"><?php echo $this->__('Save this card for future use') ?></label>
     </li>
     <?php endif; ?>
 

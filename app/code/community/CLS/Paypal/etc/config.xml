@@ -30,7 +30,7 @@
 <config>
     <modules>
         <CLS_Paypal>
-            <version>1.0.9</version>
+            <version>1.1.0</version>
         </CLS_Paypal>
     </modules>
 
@@ -67,6 +67,12 @@
                     </customerstored>
                 </entities>
             </cls_paypal_resource>
+
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create>CLS_Paypal_Model_Adminhtml_Sales_Order_Create</sales_order_create>
+                </rewrite>
+            </adminhtml>
 
             <paypal>
                 <rewrite>
@@ -219,14 +225,14 @@
         </translate>
 
         <events>
-            <adminhtml_sales_order_create_process_data_before>
+            <controller_action_predispatch_adminhtml_sales_order_create_loadBlock>
                 <observers>
                     <cls_paypal>
                         <class>cls_paypal/observer</class>
                         <method>adminCheckGuestOrder</method>
                     </cls_paypal>
                 </observers>
-            </adminhtml_sales_order_create_process_data_before>
+            </controller_action_predispatch_adminhtml_sales_order_create_loadBlock>
 
             <sales_quote_save_after>
                 <observers>

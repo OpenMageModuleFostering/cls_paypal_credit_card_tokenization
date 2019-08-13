@@ -26,6 +26,15 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
+
+/**
+ * Note: This check is in place because Paypal Payments Advanced is not supported in
+ * Magento 1.11.1.0 and below.
+ */
+//Begin Payments Advanced support check
+if (Mage::helper('cls_paypal')->isPaymentsAdvancedSupported()) {
+
+
 class CLS_Paypal_Model_Paypal_Payflowadvanced extends Mage_Paypal_Model_Payflowadvanced
 {
 
@@ -118,7 +127,7 @@ class CLS_Paypal_Model_Paypal_Payflowadvanced extends Mage_Paypal_Model_Payflowa
                 'cc_last4' => ($response->getAcct()) ? substr($response->getAcct(), -4) : '',
                 'cc_exp_month' => $ccExpMonth,
                 'cc_exp_year' => (($response->getExpdate()) ? '20'.substr($response->getExpdate(), 2) : ''),
-                'date' => Varien_Date::formatDate(true, true),
+                'date' => date('Y-m-d H:i:s'),
                 'payment_method' => $payment->getMethod()
             ));
             $customerstoredModel->save();
@@ -136,4 +145,7 @@ class CLS_Paypal_Model_Paypal_Payflowadvanced extends Mage_Paypal_Model_Payflowa
             Mage::throwException(Mage::helper('paypal')->__('Can not send new order email.'));
         }
     }
+}
+
+//End Payments Advanced support check
 }

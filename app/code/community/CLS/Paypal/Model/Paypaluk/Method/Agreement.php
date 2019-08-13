@@ -127,7 +127,7 @@ class CLS_Paypal_Model_Paypaluk_Method_Agreement extends Mage_Paypal_Model_Metho
         if ($api->getBillingAgreementId()) {
             $order->addRelatedObject($billingAgreement);
             $billingAgreement->setIsObjectChanged(true);
-            $billingAgreement->addOrderRelation($order);
+            $billingAgreement->addOrderRelation($order->getId());
         }
 
         return $this;

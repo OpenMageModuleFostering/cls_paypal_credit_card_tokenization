@@ -37,7 +37,6 @@ class CLS_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
      * @var array
      */
     public static $supportedPaymentMethods = array(
-        CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED,
         CLS_Paypal_Model_Paypal_Config::METHOD_WPP_DIRECT,
         CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWLINK,
         CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWPRO
@@ -81,6 +80,28 @@ class CLS_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
         'orderstored_original_order_id',
         'orderstored_transaction_id'
     );
+
+    /**
+     * Helper constructor
+     *
+     * @return void
+     */
+    public function __construct() {
+        //Include Payments Advanced if supported
+        if ($this->isPaymentsAdvancedSupported()) {
+            self::$supportedPaymentMethods[] = CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED;
+        }
+    }
+
+    /**
+     * Checks if Paypal Payments Advanced is supported
+     *
+     * @return bool
+     */
+    public function isPaymentsAdvancedSupported()
+    {
+        return @class_exists('Mage_Paypal_Model_Payflowadvanced');
+    }
 
     /**
      * Return parameters for the "New Order from this Payment" button (admin)

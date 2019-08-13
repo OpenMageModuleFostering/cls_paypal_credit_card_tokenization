@@ -63,7 +63,9 @@ class CLS_Paypal_Model_Customerstored extends Mage_Core_Model_Abstract
             }
             else {
                 // Payflow methods
-                $paymentMethodFilter[] = CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED;
+                if (Mage::helper('cls_paypal')->isPaymentsAdvancedSupported()) {
+                    $paymentMethodFilter[] = CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED;
+                }
                 $paymentMethodFilter[] = CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWLINK;
                 $paymentMethodFilter[] = CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWPRO;
             }
@@ -91,11 +93,14 @@ class CLS_Paypal_Model_Customerstored extends Mage_Core_Model_Abstract
                     CLS_Paypal_Model_Paypal_Config::METHOD_WPP_DIRECT,
                 ),
                 array(
-                    CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED,
                     CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWLINK,
                     CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWPRO,
                 )
             );
+
+            if (Mage::helper('cls_paypal')->isPaymentsAdvancedSupported()) {
+                array_unshift($compatibleGroups[1], CLS_Paypal_Model_Paypal_Config::METHOD_PAYFLOWADVANCED);
+            }
             
             foreach ($compatibleGroups as $group) {
                 if (in_array($this->getPaymentMethod(), $group)) {

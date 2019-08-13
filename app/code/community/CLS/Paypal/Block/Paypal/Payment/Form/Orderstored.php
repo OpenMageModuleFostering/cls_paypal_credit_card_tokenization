@@ -57,6 +57,7 @@ class CLS_Paypal_Block_Paypal_Payment_Form_Orderstored extends Mage_Payment_Bloc
 
         if (
             ($originalOrderId = $session->getPreviousOrderId())
+            || ($originalOrderId = $session->getReordered())
             || ($originalOrderId = $session->getOrderId())
         ) {
             // Get original order data

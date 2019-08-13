@@ -38,10 +38,10 @@ class CLS_Paypal_Model_Observer
     public function adminCheckGuestOrder(Varien_Event_Observer $observer)
     {
         /* @var $request Mage_Core_Controller_Request_Http */
-        $request = $observer->getRequestModel();
+        $request = Mage::app()->getRequest();
 
         /** @var $session Mage_Adminhtml_Model_Session_Quote */
-        $session = $observer->getSession();
+        $session = Mage::getSingleton('adminhtml/session_quote');
 
         if ($request->getParam('is_guest_order')) {
             // In case of guest order mark the quote appropriately
@@ -211,7 +211,7 @@ class CLS_Paypal_Model_Observer
                             'cc_last4' => $payment->getData('cc_last4'),
                             'cc_exp_month' => $payment->getData('cc_exp_month'),
                             'cc_exp_year' => $payment->getData('cc_exp_year'),
-                            'date' => Varien_Date::formatDate(true, true),
+                            'date' => date('Y-m-d H:i:s'),
                             'payment_method' => $paymentMethod
                         ));
                         $customerstoredModel->save();
@@ -231,7 +231,7 @@ class CLS_Paypal_Model_Observer
                             // Update stored card record with a new transaction ID
                             $customerstoredModel
                                 ->setData('transaction_id', $payment->getData('transaction_id'))
-                                ->setData('date', Varien_Date::formatDate(true, false));
+                                ->setData('date', date('Y-m-d'));
                             $customerstoredModel->save();
                         }
                     }
