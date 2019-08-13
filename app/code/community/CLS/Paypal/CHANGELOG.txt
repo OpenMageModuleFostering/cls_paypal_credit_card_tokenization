@@ -1,3 +1,9 @@
+CLS_Paypal 1.0.4 (10/23/2013)
+=======================================
+Fixed bugs in orderstored and customerstored methods when
+enabled for a specific website
+
+
 CLS_Paypal 1.0.0 (07/01/2013)
 =======================================
 Initial release

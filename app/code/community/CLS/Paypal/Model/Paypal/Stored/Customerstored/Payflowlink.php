@@ -158,4 +158,15 @@ class CLS_Paypal_Model_Paypal_Stored_Customerstored_Payflowlink extends CLS_Payp
         return $this->_commonPayflowMethod->getConfigData($field, $storeId);
     }
 
+    /**
+     * Set the store on the model instance and common method
+     *
+     * @param int $store
+     * @return $this
+     */
+    public function setStore($store) {
+        $this->_commonPayflowMethod->setStore($store);
+        $this->setData('store', $store);
+        return $this;
+    }
 }
