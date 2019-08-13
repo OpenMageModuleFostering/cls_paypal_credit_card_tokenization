@@ -1,4 +1,19 @@
-# CLS_Paypal Module Features
+# Support Information
+
+Please submit support requests to support@classyllama.com.
+
+## Magento Compatibility
+
+* Community 1.5.0.1 and up
+* Enterprise 1.10.0.1 and up
+
+_NOTE:_ PayFlow Link compatibility is un-tested in Community 1.5.0.1 and Enterprise 1.10.0.1, because the core Magento codebase in these versions is no longer compatible with this PayPal solution.
+
+## PayPal Configuration
+
+Please note that you must contact your PayPal representative to enable reference transaction support on your PayPal account in order to use this extension.
+
+# Module Features
 
 PCI Compliant saved credit cards with Paypal reference transactions.
 
@@ -38,15 +53,8 @@ The features of this module are available for Magento integrations with the foll
 * Payments Advanced
 * Payflow Pro
 * Payflow Link
-* Express Checkout
 
-
-## Magento Compatibility
-
-* Community 1.5.0.1 and up
-* Enterprise 1.10.0.1 and up
-
-_NOTE:_ PayFlow Link compatibility is un-tested in Community 1.5.0.1 and Enterprise 1.10.0.1, because the core Magento codebase in these versions is no longer compatible with this PayPal solution.
+Certain features pertaining to billing agreements also affect Express Checkout, when configured in conjunction with one of the other solutions.
 
 ## Configuration Instructions
 
@@ -59,7 +67,7 @@ areas.
 PayPal Billing Agreement Settings can now be found under Advanced Settings
 for Payflow Pro, just as it is found for other solutions.
 
-For each of the four supported solutions, Advanced Settings now contains
+For each of the four supported direct payment solutions, Advanced Settings now contains
 three added groups:  PayPal Saved Credit Card Settings, PayPal Previous Order
 Credit Card Settings, and PayPal Previous Order Billing Agreement Settings.
 Enable the module's various features from these groups, as well as setting

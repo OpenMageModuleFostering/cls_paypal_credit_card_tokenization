@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `{$this->getTable('cls_paypal/customerstored')}` (
   `cc_last4` varchar(255) NOT NULL COMMENT 'Cc_last4',
   `cc_exp_month` varchar(255) NOT NULL COMMENT 'Cc_exp_month',
   `cc_exp_year` varchar(255) NOT NULL COMMENT 'Cc_exp_year',
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `payment_method` varchar(255) NOT NULL COMMENT 'Payment_method',
   PRIMARY KEY (`stored_card_id`),
   KEY `FK_CLS_PAYPAL_CSTR_STORED_CSTR_ID_CSTR_ENTT_ENTT_ID` (`customer_id`),
