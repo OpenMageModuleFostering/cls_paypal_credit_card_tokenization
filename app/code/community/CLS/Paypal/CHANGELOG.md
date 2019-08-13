@@ -1,3 +1,7 @@
+CLS_Paypal 1.1.11 (6/19/2015)
+=======================================
+[CHANGED] Moved doc files to root directory
+
 CLS_Paypal 1.1.10 (5/19/2015)
 =======================================
 [CHANGED] Minor template and method changes to match core codebase
