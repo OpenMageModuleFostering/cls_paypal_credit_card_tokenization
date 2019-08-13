@@ -15,7 +15,7 @@ PCI Compliant saved credit cards with Paypal reference transactions.
 ## Admin Order Management
 
 * When viewing an order, admins have the option to select "New Order from this Payment." This option allows the same PayPal billing agreement or credit card used on the previous order to be charged on the new order.  
-* The ability to re-charge the previous PayPal billing agreement or credit card is also available when editing an order.
+* The ability to re-charge the previous PayPal billing agreement or credit card is also available when performing a re-order or editing an order.
 * To better facilitate the use of the "New Order from this Payment" feature, the admin interface can now be used to create guest orders.
 
 

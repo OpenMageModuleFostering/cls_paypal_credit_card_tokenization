@@ -1,3 +1,16 @@
+CLS_Paypal 1.0.8 (3/19/2014)
+=======================================
+[ADDED] Implemented support for "Previously Used" methods when re-ordering in admin
+[FIXED] Fixed issue with currency conversion in Payments Pro
+
+CLS_Paypal 1.0.7 (3/18/2014)
+=======================================
+[FIXED] Changes to meta files to be in line with current extension packager and standard modman workflow
+
+CLS_Paypal 1.0.6 (2/5/2014)
+=======================================
+[CHANGED] Removed packages and made changes to be compatible with separate packager script
+
 CLS_Paypal 1.0.5 (1/22/2014)
 =======================================
 [FIXED] Bugs with multi-address checkout

@@ -27,14 +27,14 @@
  */
 
 class CLS_Paypal_Model_Paypal_Api_Nvp extends Mage_Paypal_Model_Api_Nvp
-{
-
+{   
     protected function _construct()
     {
         parent::_construct();
 
         $this->_globalMap['BUTTONSOURCE'] = 'paypal_info_code';
         $this->_debugReplacePrivateDataKeys[] = 'BUTTONSOURCE';
+        $this->_doReferenceTransactionRequest[] = 'CURRENCYCODE';
     }
 
     /**

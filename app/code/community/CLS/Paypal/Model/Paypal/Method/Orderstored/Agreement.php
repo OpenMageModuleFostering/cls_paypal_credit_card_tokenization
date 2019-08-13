@@ -79,6 +79,7 @@ class CLS_Paypal_Model_Paypal_Method_Orderstored_Agreement extends Mage_Paypal_M
             ->setReferenceId($payment->getBillingAgreementId())
             ->setPaymentAction($this->_pro->getConfig()->paymentAction)
             ->setAmount($amount)
+            ->setCurrencyCode($order->getBaseCurrencyCode())
             ->setNotifyUrl(Mage::getUrl('paypal/ipn/'))
             ->setPaypalCart(Mage::getModel('paypal/cart', array($order)))
             ->setIsLineItemsEnabled($this->_pro->getConfig()->lineItemsEnabled)

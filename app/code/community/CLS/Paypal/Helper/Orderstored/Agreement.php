@@ -65,8 +65,10 @@ class CLS_Paypal_Helper_Orderstored_Agreement extends Mage_Core_Helper_Data
      */
     public function getSessionOrder() {
         if (is_null($this->_sessionOrder)) {
-            //New order from this payment
-            if ($orderId = Mage::getSingleton('adminhtml/session_quote')->getPreviousOrderId()) {
+            //New order from this payment, or re-order
+            if (($orderId = Mage::getSingleton('adminhtml/session_quote')->getPreviousOrderId())
+                || ($orderId = Mage::getSingleton('adminhtml/session_quote')->getReordered())
+            ) {
                 $this->_sessionOrder = Mage::getModel('sales/order')->load($orderId);
             } else {
             //Edit

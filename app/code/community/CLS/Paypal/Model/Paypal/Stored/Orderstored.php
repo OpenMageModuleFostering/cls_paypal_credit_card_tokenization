@@ -121,6 +121,7 @@ class CLS_Paypal_Model_Paypal_Stored_Orderstored extends CLS_Paypal_Model_Paypal
         if (
             ($originalOrderId = $session->getPreviousOrderId())
             || ($originalOrderId = $session->getOrderId())
+            || ($originalOrderId = $session->getReordered())
         ) {
             // Get original order data
             /** @var $originalOrder Mage_Sales_Model_Order */
