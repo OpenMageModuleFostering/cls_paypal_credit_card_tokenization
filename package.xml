@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<package>
+    <name>CLS_Paypal_Credit_Card_Tokenization</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>PCI Compliant saved credit cards with PayPal reference transactions. Customers, Admin and Recurring Payments.</summary>
+    <description>CLS_Paypal Module Features&#xD;
+==========================&#xD;
+PCI Compliant saved credit cards with Paypal reference transactions.&#xD;
+&#xD;
+## Saved Credit Card&#xD;
+&#xD;
+* Customers can save their credit card information during the checkout process and then use the same credit card on future orders.    &#xD;
+* Our solution is fully PCI Compliant since it stores a secure token as a reference transaction to the credit card data. Credit card data is not actually stored on the web site.&#xD;
+&#xD;
+## Billing Agreements&#xD;
+&#xD;
+* Billing agreements are now available with Payflow Pro integration.    &#xD;
+* Billing agreements can be created during Express Checkout even for guest or registering customers, for use with the new admin order management features.  &#xD;
+       &#xD;
+## Admin Order Management&#xD;
+&#xD;
+* When viewing an order, admins have the option to select "New Order from this Payment." This option allows the same PayPal billing agreement or credit card used on the previous order to be charged on the new order.  &#xD;
+* The ability to re-charge the previous PayPal billing agreement or credit card is also available when editing an order.&#xD;
+* To better facilitate the use of the "New Order from this Payment" feature, the admin interface can now be used to create guest orders.&#xD;
+&#xD;
+&#xD;
+# What are PayPal Billing Agreements?&#xD;
+&#xD;
+Billing Agreements allow you to bill customers at regular intervals.&#xD;
+&#xD;
+Set up payments for dues, subscriptions, installments, and more.&#xD;
+&#xD;
+* Automatically bill customers at specified intervals.&#xD;
+* Use automated notifications and reporting to manage billing status.&#xD;
+* Customers can complete transactions without leaving your app, game, or website.&#xD;
+&#xD;
+&#xD;
+# Supported PayPal Solutions&#xD;
+&#xD;
+The features of this module are available for Magento integrations with the following PayPal solutions:&#xD;
+&#xD;
+* Payments Pro&#xD;
+* Payments Advanced&#xD;
+* Payflow Pro&#xD;
+* Payflow Link&#xD;
+* Express Checkout&#xD;
+&#xD;
+&#xD;
+# Magento Compatibility&#xD;
+&#xD;
+* Community 1.7.0.2 and up&#xD;
+* Enterprise 1.12.0.2 and up&#xD;
+&#xD;
+# Configuration Instructions&#xD;
+&#xD;
+Settings for this module's features can be found in System Configuration,&#xD;
+under the various existing PayPal configuration groups.  In the Payment Methods&#xD;
+tab, navigate to a specific PayPal solution (Payments Pro, for example)&#xD;
+and open the the solution's Advanced Settings to find the new configuration&#xD;
+areas.&#xD;
+&#xD;
+PayPal Billing Agreement Settings can now be found under Advanced Settings&#xD;
+for Payflow Pro, just as it is found for other solutions.&#xD;
+&#xD;
+For each of the four supported solutions, Advanced Settings now contains&#xD;
+three added groups:  PayPal Saved Credit Card Settings, PayPal Previous Order&#xD;
+Credit Card Settings, and PayPal Previous Order Billing Agreement Settings.&#xD;
+Enable the module's various features from these groups, as well as setting&#xD;
+their configuration options independently of the standard credit card&#xD;
+and billing agreement configurations.&#xD;
+</description>
+    <notes>Initial release</notes>
+    <authors><author><name>Classy Llama</name><user>classyllama</user><email>info@classyllama.com</email></author></authors>
+    <date>2013-07-02</date>
+    <time>15:06:19</time>
+    <contents><target name="magecommunity"><dir name="CLS"><dir name="Paypal"><dir name="Block"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><dir name="Create"><file name="Customer.php" hash="bdda7f26580da00836dc14c760ce7bd4"/></dir></dir></dir></dir><dir name="Customer"><file name="Storedcard.php" hash="1f0ea64d4d88d8acc69b491ad157013d"/></dir><dir name="Payment"><dir name="Form"><file name="Cc.php" hash="bd28bf5a1476b6d000f7ddcfc8097520"/></dir></dir><dir name="Paypal"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Fieldset"><file name="Location.php" hash="51a66bf4179183e15d74e2dd60867d08"/></dir></dir></dir></dir><dir name="Payflow"><dir name="Advanced"><file name="Form.php" hash="431cc885b585b3a6ae44b3e63b4a3500"/></dir><dir name="Link"><file name="Form.php" hash="803988293c751db8be065174648ea789"/></dir></dir><dir name="Payment"><dir name="Form"><file name="Customerstored.php" hash="705a1066768956fa2757aa6974df6a90"/><dir name="Orderstored"><file name="Agreement.php" hash="51a809dde7da3c5fb7adaccfc94583fe"/></dir><file name="Orderstored.php" hash="aae8127491dcace2d2800879b2743157"/></dir></dir></dir><dir name="Paypaluk"><dir name="Payment"><dir name="Form"><dir name="Orderstored"><file name="Agreement.php" hash="f2cefe3e8fc148a628b8c7275401845d"/></dir></dir></dir></dir></dir><file name="CHANGELOG.txt" hash="f91f8f732f0fbe8bd37f5ff4ec387a65"/><dir name="Helper"><file name="Data.php" hash="0d3f45c57c94284712bd91aa4b19351b"/><dir name="Orderstored"><file name="Agreement.php" hash="d84455b451593c2eaa46522e09834da7"/></dir><dir name="Paypal"><file name="Data.php" hash="f60bf2892eb63645f2eab96bc7dc6b4a"/></dir><file name="Storedcard.php" hash="874a70e486c9b8ed353167245f9ed07a"/></dir><file name="LICENSE.txt" hash="71db18446bebc23ced8dd62644d16b5f"/><dir name="Model"><file name="Customerstored.php" hash="8be7c468362ad43b6a09d4c223d36515"/><file name="Observer.php" hash="b3bef212d6632fe85feb02898a382efc"/><dir name="Paypal"><dir name="Api"><file name="Nvp.php" hash="cef7500ca76ea7f62ed4ee5843fcf17c"/></dir><file name="Config.php" hash="dc8223a0fc3b8d6659184d1fe6c0330b"/><file name="Direct.php" hash="9f551d5e14e99451ca02f79d2f78f4ab"/><dir name="Express"><file name="Checkout.php" hash="021cbbf4e0985106ab24bfa8bd62abb4"/></dir><file name="Express.php" hash="67b5631bf57b2797050c73c7378aee9c"/><file name="Info.php" hash="d6d8415242d2a63eb831cac84f276701"/><dir name="Method"><dir name="Orderstored"><file name="Agreement.php" hash="dea76e2815bdffc8a7225840574b12ac"/></dir></dir><file name="Payflowadvanced.php" hash="333a909b6b48c6c3c864e591d5ee0a4d"/><file name="Payflowlink.php" hash="98129dfc3d9a5236e8c5a94cddbeb6d3"/><file name="Payflowpro.php" hash="dbfa4f171934f4f26d05515ca5ae36b1"/><dir name="Stored"><file name="Abstract.php" hash="946b41be7b003f821fa091e25974e2e1"/><dir name="Customerstored"><file name="Direct.php" hash="4677b9c142d635c9f77249cd87f51150"/><file name="Payflow.php" hash="0c4cbbac9db29160ff4a7c352bc915f2"/><file name="Payflowadvanced.php" hash="1fffe3ac9b59ca8125c751de9bc2ba03"/><file name="Payflowlink.php" hash="d397df8fa3a6df234a43f0988faac2b1"/><file name="Payflowpro.php" hash="cbcb7c81a3fae18b82cc2f2c0a65a173"/></dir><file name="Customerstored.php" hash="f9fe1df0936372d6abcb30b3129c080b"/><dir name="Orderstored"><file name="Direct.php" hash="403bd0b06c2f235c9480eaf05d449b3b"/><file name="Payflow.php" hash="98fae36789f67423db4a520b7feaa01f"/><file name="Payflowadvanced.php" hash="8130535eed87eb0aa8966e749785de5d"/><file name="Payflowlink.php" hash="77d02f6c566b31cf9cc175ebc8f837ac"/><file name="Payflowpro.php" hash="15dcc930fa278a9eff5ef5b2f335d89c"/></dir><file name="Orderstored.php" hash="2f9b44b951f3f7dfe80ab8153be7f8bc"/><file name="Payflow.php" hash="288f16ab9d9d2b0d8957c8887f528b99"/></dir></dir><dir name="Paypaluk"><dir name="Api"><file name="Nvp.php" hash="ef27f778fde49eab569c6f3944702ec4"/></dir><dir name="Express"><file name="Checkout.php" hash="6a2a85e0acb0645d025c8823a5b3cd2f"/></dir><file name="Express.php" hash="b491f2d6acf89a29f4a23dc573f8e44f"/><dir name="Method"><file name="Agreement.php" hash="c86f295fa6312888b45c0f4a68fd27df"/><dir name="Orderstored"><file name="Agreement.php" hash="8534a919294e533247ef5cebdef434ce"/></dir></dir></dir><dir name="Resource"><dir name="Customerstored"><file name="Collection.php" hash="818889cb1eedd1e2047d09f6270f9b30"/></dir><file name="Customerstored.php" hash="0dd4ba6646ffbd32efbe6e4f0bc4e3c7"/></dir></dir><file name="README.txt" hash="3371344d77a0c17859e4b7e75380b0a7"/><dir name="controllers"><dir name="Adminhtml"><dir name="Sales"><dir name="Order"><file name="CreateController.php" hash="edd90db7fcc89ccfd5519864debed3ad"/></dir></dir></dir><dir name="Customer"><file name="StoredcardController.php" hash="60c3403cd13a9ff1805506f5988cabdb"/></dir><dir name="Paypal"><file name="ExpressController.php" hash="53f83f79f948ffc0eb6abdfc5d8f60b0"/></dir><dir name="PaypalUk"><file name="ExpressController.php" hash="639821dc1c01a0276052579c5507a599"/></dir></dir><dir name="etc"><file name="config.xml" hash="0b90df786bc655c82d49c2200d4c769f"/><file name="system.xml" hash="4d5998c927b5739a52c078c99644bd32"/></dir><dir name="sql"><dir name="cls_paypal_setup"><file name="install-0.0.1.php" hash="33f870045a3cc0da094eed143adaf57b"/><file name="upgrade-0.3.0-0.3.1.php" hash="240dd4eae586f033ec6efad99773fbce"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="cls_paypal.xml" hash="6747dd281152c450e1511f9d551c9766"/></dir><dir name="template"><dir name="cls_paypal"><dir name="payment"><dir name="form"><file name="cc.phtml" hash="a23359ef60f0cf4041f4dd406c1cb286"/><file name="customer_stored.phtml" hash="6004f23604bb7de0a409494bb0c0c439"/><file name="order_stored.phtml" hash="7620eacd6d2351df7e827eb168d03236"/></dir></dir><dir name="sales"><dir name="order"><dir name="create"><dir name="form"><file name="address.phtml" hash="a452ddc2a6e812f0872e82ad931b9dac"/></dir></dir></dir><dir name="payment"><dir name="form"><dir name="orderstored"><file name="agreement.phtml" hash="5a080925e336f505381cba5e43f70e07"/></dir></dir></dir></dir></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="cls_paypal.xml" hash="0e2a6af1135e6fb29dda4b267797a6bd"/></dir><dir name="template"><dir name="cls_paypal"><dir name="customer"><file name="storedcard.phtml" hash="4756af996c65fb83a09ab0312a66bd1f"/></dir><dir name="payment"><dir name="form"><file name="cc.phtml" hash="bd55fa445bea026721116b29dfadbb73"/><file name="customer_stored.phtml" hash="591d82906294e37f5c2e317f71144a0f"/></dir></dir><dir name="paypal"><dir name="payflow"><file name="info.phtml" hash="548f1b761782c2351482dd1d1f44a7af"/></dir></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="CLS_Paypal.xml" hash="9e629aac18f2e5f2c9feb266985c912f"/></dir></target><target name="magelocale"><dir name="en_US"><file name="CLS_Paypal.csv" hash="ab57482877d914bb1d02021d95c65520"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>
