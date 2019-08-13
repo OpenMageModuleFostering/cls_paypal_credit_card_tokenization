@@ -91,7 +91,7 @@ class CLS_Paypal_Model_Paypaluk_Method_Orderstored_Agreement extends CLS_Paypal_
         $this->_pro->importPaymentInfo($api, $payment);
 
         $payment
-            ->setAdditionalInformation(CLS_Paypal_Model_Paypaluk_Api_Nvp::RESPONSE_MSG, $api->getResponseMsg())
+            ->setAdditionalInformation(CLS_Paypal_Model_Paypaluk_Api_Nvp_Common::RESPONSE_MSG, $api->getResponseMsg())
             ->setPreparedMessage(Mage::helper('cls_paypal')->__('Payflow PNREF: #%s.', $api->getTransactionId()))
             ->setTransactionAdditionalInfo(Mage_PaypalUk_Model_Pro::TRANSPORT_PAYFLOW_TXN_ID, $api->getTransactionId());
 

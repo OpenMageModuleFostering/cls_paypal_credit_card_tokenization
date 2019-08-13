@@ -30,7 +30,7 @@
 <config>
     <modules>
         <CLS_Paypal>
-            <version>1.0.8</version>
+            <version>1.0.9</version>
         </CLS_Paypal>
     </modules>
 
@@ -84,7 +84,8 @@
 
             <paypaluk>
                 <rewrite>
-                    <api_nvp>CLS_Paypal_Model_Paypaluk_Api_Nvp</api_nvp>
+                    <api_express_nvp>CLS_Paypal_Model_Paypaluk_Api_Express_Nvp</api_express_nvp>
+                    <api_nvp>CLS_Paypal_Model_Paypaluk_Api_Nvp</api_nvp><!-- Necessary for 1.13.0 and below, when this model was also used for Express -->
                     <express>CLS_Paypal_Model_Paypaluk_Express</express>
                     <express_checkout>CLS_Paypal_Model_Paypaluk_Express_Checkout</express_checkout>
                 </rewrite>

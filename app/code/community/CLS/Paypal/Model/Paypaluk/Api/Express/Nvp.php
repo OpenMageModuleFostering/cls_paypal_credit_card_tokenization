@@ -19,14 +19,14 @@
  * module for your needs, please write us at sales@classyllama.com.
  *
  * To report bugs or issues with this module, please email support+paypal@classyllama.com.
- * 
+ *
  * @category   CLS
  * @package    Paypal
  * @copyright  Copyright (c) 2013 Classy Llama Studios, LLC (http://www.classyllama.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-class CLS_Paypal_Model_Paypaluk_Api_Nvp extends Mage_PaypalUk_Model_Api_Nvp
+class CLS_Paypal_Model_Paypaluk_Api_Express_Nvp extends Mage_PaypalUk_Model_Api_Express_Nvp
 {
     protected $_commonNvp = null;
 
@@ -58,7 +58,7 @@ class CLS_Paypal_Model_Paypaluk_Api_Nvp extends Mage_PaypalUk_Model_Api_Nvp
     {
         return $this->_commonNvp->getPaypalInfoCode();
     }
-    
+
     /**
      * Return PaypalUk tender based on config data
      *
