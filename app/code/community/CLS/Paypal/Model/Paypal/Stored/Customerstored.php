@@ -50,7 +50,8 @@ class CLS_Paypal_Model_Paypal_Stored_Customerstored extends CLS_Paypal_Model_Pay
             $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         }
         
-        if (!$customerId || !Mage::getSingleton('customer/session')->isLoggedIn()) {
+        if (!$customerId
+            || (!Mage::getSingleton('customer/session')->isLoggedIn() && !Mage::app()->getStore()->isAdmin())) {
             return false;
         }
 
