@@ -1,3 +1,9 @@
+CLS_Paypal 1.1.7 (8/8/2014)
+=======================================
+[ADDED] Notifications about PayPal reference transaction configuration in System Config
+[FIXED] Made sure saved credit card options don't show when not actually logged in with Persistent Cart
+[FIXED] Bug with the way saved credit card options are filtered by expiration
+
 CLS_Paypal 1.1.6 (7/7/2014)
 =======================================
 [CHANGED] Re-formatted README

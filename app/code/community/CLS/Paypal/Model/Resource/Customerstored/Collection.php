@@ -57,9 +57,9 @@ class CLS_Paypal_Model_Resource_Customerstored_Collection extends Mage_Core_Mode
      */
     public function filterByActiveState()
     {
-        $now = new Zend_Date(null);
-        $now->addMonth(0 - CLS_Paypal_Model_Paypal_Config::STORED_CARD_TTL_MONTHS);
-        $this->getSelect()->where('date >= ?', date('Y-m-d', time()));
+        $minDate = new Zend_Date(null);
+        $minDate->addMonth(0 - CLS_Paypal_Model_Paypal_Config::STORED_CARD_TTL_MONTHS);         
+        $this->getSelect()->where('date >= ?', date('Y-m-d', $minDate->get(Zend_Date::TIMESTAMP)));
 
         return $this;
     }
