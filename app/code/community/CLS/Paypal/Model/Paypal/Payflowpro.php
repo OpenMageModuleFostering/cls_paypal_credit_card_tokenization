@@ -58,6 +58,11 @@ class CLS_Paypal_Model_Paypal_Payflowpro extends Mage_Paypal_Model_Payflowpro
             ->setTender(self::TENDER_CC)
             ->setRequestId($this->_generateRequestId())
             ->setButtonsource(Mage::helper('cls_paypal')->getPaypalInfoCode());
+        
+        if($payment->getOrder()) {            
+            $request->setInvnum($payment->getOrder()->getIncrementId());
+        }
+       
         return $request;
     }
 
