@@ -67,6 +67,9 @@ class CLS_Paypal_Model_Paypal_Stored_Customerstored_Payflow extends CLS_Paypal_M
     {
         // Get Reference ID
         $paymentStoredCardId = $this->_commonMethod->getInfoInstance()->getData('stored_card_id');
+        if (is_null($paymentStoredCardId)) {
+            $paymentStoredCardId = $this->_commonMethod->getInfoInstance()->getAdditionalInformation('stored_card_id');
+        }
         $referenceId = null;
 
         if ($paymentStoredCardId) {

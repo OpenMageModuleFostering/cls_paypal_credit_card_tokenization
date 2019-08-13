@@ -115,6 +115,9 @@ class CLS_Paypal_Model_Paypal_Stored_Customerstored_Direct extends CLS_Paypal_Mo
     {
         // Get Reference ID
         $paymentStoredCardId = $this->getInfoInstance()->getData('stored_card_id');
+        if (is_null($paymentStoredCardId)) {
+            $paymentStoredCardId = $this->getInfoInstance()->getAdditionalInformation('stored_card_id');
+        }
         $referenceId = null;
 
         if ($paymentStoredCardId) {

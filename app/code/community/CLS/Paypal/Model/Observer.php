@@ -174,60 +174,66 @@ class CLS_Paypal_Model_Observer
      */
     public function checkoutSubmitAllAfter(Varien_Event_Observer $observer)
     {
-        /** @var $order Mage_Sales_Model_Order */
-        $order = $observer->getOrder();
-
-        $customerId = $order->getData('customer_id');
-
-        if (!$customerId) {
-            // Save transaction details for registered customers only
-            return;
+        $orders = $observer->getOrders();
+        if (is_null($orders)) {
+            $orders = array($observer->getOrder());
         }
 
-        $payment = $order->getPayment();
-        $paymentMethod = $payment->getMethod();
+        foreach($orders as $order) {
+            /** @var $order Mage_Sales_Model_Order */
 
-        if ( isset($paymentMethod) && $payment->getData('transaction_id') ) {
+            $customerId = $order->getData('customer_id');
 
-            /** @var $helper CLS_Paypal_Helper_Data */
-            $helper = Mage::helper('cls_paypal');
-
-            if ($helper->isSdkPaymentMethod($paymentMethod)) {
-                if (
-                    $payment->hasAdditionalInformation('cc_save_future') &&
-                    ($payment->getAdditionalInformation('cc_save_future') == 'Y')
-                ) {
-                    // Create new stored card
-                    $customerstoredModel = Mage::getModel('cls_paypal/customerstored');
-                    $customerstoredModel->setData(array(
-                        'transaction_id' => $payment->getData('transaction_id'),
-                        'customer_id'    => $customerId,
-                        'cc_type' => $payment->getData('cc_type'),
-                        'cc_last4' => $payment->getData('cc_last4'),
-                        'cc_exp_month' => $payment->getData('cc_exp_month'),
-                        'cc_exp_year' => $payment->getData('cc_exp_year'),
-                        'date' => Varien_Date::formatDate(true, true),
-                        'payment_method' => $paymentMethod
-                    ));
-                    $customerstoredModel->save();
-                }
+            if (!$customerId) {
+                // Save transaction details for registered customers only
+                return;
             }
 
-            elseif ($helper->isCustomerstoredPaymentMethod($paymentMethod)) {
-                // Update existing stored card
-                $customerstoredModel = Mage::getModel('cls_paypal/customerstored');
+            $payment = $order->getPayment();
+            $paymentMethod = $payment->getMethod();
 
-                if ($payment->hasAdditionalInformation('stored_card_id')) {
-                    // Reference payment using existing customer's stored card
-                    $storedCardId = $payment->getAdditionalInformation('stored_card_id');
-                    $customerstoredModel->load($storedCardId);
+            if ( isset($paymentMethod) && $payment->getData('transaction_id') ) {
 
-                    if ($customerstoredModel->getId()) {
-                        // Update stored card record with a new transaction ID
-                        $customerstoredModel
-                            ->setData('transaction_id', $payment->getData('transaction_id'))
-                            ->setData('date', Varien_Date::formatDate(true, false));
+                /** @var $helper CLS_Paypal_Helper_Data */
+                $helper = Mage::helper('cls_paypal');
+
+                if ($helper->isSdkPaymentMethod($paymentMethod)) {
+                    if (
+                        $payment->hasAdditionalInformation('cc_save_future') &&
+                        ($payment->getAdditionalInformation('cc_save_future') == 'Y')
+                    ) {
+                        // Create new stored card
+                        $customerstoredModel = Mage::getModel('cls_paypal/customerstored');
+                        $customerstoredModel->setData(array(
+                            'transaction_id' => $payment->getData('transaction_id'),
+                            'customer_id'    => $customerId,
+                            'cc_type' => $payment->getData('cc_type'),
+                            'cc_last4' => $payment->getData('cc_last4'),
+                            'cc_exp_month' => $payment->getData('cc_exp_month'),
+                            'cc_exp_year' => $payment->getData('cc_exp_year'),
+                            'date' => Varien_Date::formatDate(true, true),
+                            'payment_method' => $paymentMethod
+                        ));
                         $customerstoredModel->save();
+                    }
+                }
+
+                elseif ($helper->isCustomerstoredPaymentMethod($paymentMethod)) {
+                    // Update existing stored card
+                    $customerstoredModel = Mage::getModel('cls_paypal/customerstored');
+
+                    if ($payment->hasAdditionalInformation('stored_card_id')) {
+                        // Reference payment using existing customer's stored card
+                        $storedCardId = $payment->getAdditionalInformation('stored_card_id');
+                        $customerstoredModel->load($storedCardId);
+
+                        if ($customerstoredModel->getId()) {
+                            // Update stored card record with a new transaction ID
+                            $customerstoredModel
+                                ->setData('transaction_id', $payment->getData('transaction_id'))
+                                ->setData('date', Varien_Date::formatDate(true, false));
+                            $customerstoredModel->save();
+                        }
                     }
                 }
             }

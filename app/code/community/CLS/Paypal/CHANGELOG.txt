@@ -1,6 +1,11 @@
+CLS_Paypal 1.0.5 (1/22/2014)
+=======================================
+[FIXED] Bugs with multi-address checkout
+
+
 CLS_Paypal 1.0.4 (10/23/2013)
 =======================================
-Fixed bugs in orderstored and customerstored methods when
+[FIXED] Fixed bugs in orderstored and customerstored methods when
 enabled for a specific website
 
 
