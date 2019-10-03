@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/CLS_Paypal_Credit_Card_Tokenization",
+    "name": "OpenMageModuleFostering\/CLS_Paypal_Credit_Card_Tokenization",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "PCI Compliant saved credit cards with PayPal reference transactions. Customers, Admin and Recurring Payments.",
     "authors": [
-    {
-        "name": "Classy Llama",
-        "email": "info@classyllama.com"
-    }
-],
+        {
+            "name": "Classy Llama",
+            "email": "info@classyllama.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
